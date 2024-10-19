@@ -1,6 +1,7 @@
 interface IProjects {
   title: string;
   logo: string;
+  altText: string;
   github: string;
   application: string;
   description: string;

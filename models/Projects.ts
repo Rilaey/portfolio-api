@@ -12,6 +12,10 @@ const projectSchema = new Schema<IProjectsDocument>({
     type: String,
     required: true
   },
+  altText: {
+    type: String,
+    required: true
+  },
   github: {
     type: String,
     required: true

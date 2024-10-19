@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { _id, title, logo, github, application, description, tools } =
+  const { _id, title, logo, github, application, description, tools, altText } =
     req.body;
 
   await dbConnect();
@@ -63,7 +63,8 @@ export default async function handler(
           !github ||
           !application ||
           !description ||
-          !tools
+          !tools ||
+          !altText
         ) {
           return res.status(400).json({
             success: false,
@@ -75,6 +76,7 @@ export default async function handler(
         const project = await Project.create({
           title,
           logo,
+          altText,
           github,
           application,
           description,
@@ -128,6 +130,7 @@ export default async function handler(
           {
             ...(title && { title }),
             ...(logo && { logo }),
+            ...(altText && { altText }),
             ...(github && { github }),
             ...(application && { application }),
             ...(description && { description }),
