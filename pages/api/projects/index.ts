@@ -128,7 +128,7 @@ export default async function handler(
         const project = await Project.findByIdAndUpdate(
           { _id },
           {
-            ...(title && { title }),
+            ...title && { title },
             ...(logo && { logo }),
             ...(altText && { altText }),
             ...(github && { github }),
